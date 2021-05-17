@@ -28,8 +28,15 @@ Route::group([
     Route::group([
         'middleware' => 'auth:api'
     ], function(){
-        Route::get('me', 'AuthController@me');
+
     });
+});
+
+Route::group([
+    'middleware' => 'auth:api',
+    'prefix' => 'user'
+],function(){
+Route::get('me', 'UserController@me');
 });
 
 

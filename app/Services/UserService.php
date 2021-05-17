@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Repositories\Contracts\UserRepositoryInterface;
 use Illuminate\Support\Facades\Auth;
+use App\User;
 
 class UserService
 {
@@ -20,7 +21,7 @@ class UserService
         $userData = [
             'name' => $data['name'],
             'email' => $data['email'],
-            'password' => $data['password'],
+            'password' => bcrypt($data['password']),
         ];
         $newUser = $this->userRepositoryInterface->registerUser($userData);
 

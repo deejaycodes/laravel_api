@@ -20,6 +20,8 @@ class AuthController extends Controller
         $user = $this->userService->registerUser($request->all());
 
         $token = $user->createToken('socialmediaapp')->accessToken;
+        dd($token);
+
 
         return response()->json([
             'data' => [
